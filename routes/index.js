@@ -22,7 +22,12 @@ router.post(
 router.use(auth);
 router.use('/users', users);
 router.use('/movies', movies);
-router.get('/signout', logoutUser);
+
+router.post(
+  '/signout',
+  logoutUser,
+);
+
 router.use('/*', (req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
 });

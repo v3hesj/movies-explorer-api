@@ -10,15 +10,13 @@ module.exports.validateAuth = celebrate({
   }),
 });
 
-module.exports.validateRegister = celebrate({
-  body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2).max(30),
-    avatar: Joi.string().pattern(pattern),
-    email: Joi.string().email().required(),
-    password: Joi.string().required(),
-  }),
-});
+// module.exports.validateRegister = celebrate({
+//   body: Joi.object().keys({
+//     name: Joi.string().min(2).max(30),
+//     email: Joi.string().email().required(),
+//     password: Joi.string().required(),
+//   }),
+// });
 
 module.exports.validateId = celebrate({
   params: Joi.object().keys({
@@ -29,7 +27,7 @@ module.exports.validateId = celebrate({
 module.exports.validateUpdate = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30).required(),
-    about: Joi.string().min(2).max(30).required(),
+    email: Joi.string().min(2).max(30).required(),
   }),
 });
 

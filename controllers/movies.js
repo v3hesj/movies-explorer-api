@@ -10,7 +10,8 @@ const ForbiddenError = require('../errors/forbidden-err');
 const Movie = require('../models/movie');
 
 module.exports.getMovie = (req, res, next) => {
-  Movie.find({})
+  const owner = req.user._id;
+  Movie.find({ owner })
     .then((movie) => res.status(CodeSuccess.OK).send({ movie }))
     .catch((error) => next(error));
 };

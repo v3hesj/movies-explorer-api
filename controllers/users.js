@@ -78,7 +78,7 @@ module.exports.updateUser = (req, res, next) => {
     new: true,
     runValidators: true,
   })
-    .orFail(new NotFoundError('Нет пользователя с таким id'))
+    .orFail(() => next(new NotFoundError('Нет пользователя с таким id')))
     .then((user) => res.status(CodeSuccess.OK).send({ user }))
     .catch((err) => {
       if (err instanceof ValidationError) {
