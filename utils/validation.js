@@ -10,13 +10,13 @@ module.exports.validateAuth = celebrate({
   }),
 });
 
-// module.exports.validateRegister = celebrate({
-//   body: Joi.object().keys({
-//     name: Joi.string().min(2).max(30),
-//     email: Joi.string().email().required(),
-//     password: Joi.string().required(),
-//   }),
-// });
+module.exports.validateRegister = celebrate({
+  body: Joi.object().keys({
+    name: Joi.string().min(2).max(30),
+    email: Joi.string().email().required(),
+    password: Joi.string().required(),
+  }),
+});
 
 module.exports.validateId = celebrate({
   params: Joi.object().keys({
