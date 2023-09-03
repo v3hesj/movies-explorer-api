@@ -19,9 +19,8 @@ router.post(
   createUser,
 );
 
-router.use(auth);
-router.use('/users', users);
-router.use('/movies', movies);
+router.use('/users', auth, users);
+router.use('/movies', auth, movies);
 
 router.post(
   '/signout',
