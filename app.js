@@ -11,7 +11,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routes = require('./routes');
 const serverError = require('./errors/server-err');
 
-const { PORT = 3000, MONGO_URL } = process.env;
+const { PORT = 3000, MONGO_URL = 'mongodb://127.0.0.1:27017/movies' } = process.env;
 
 const app = express();
 

@@ -58,9 +58,9 @@ module.exports.createUser = (req, res, next) => {
 };
 
 module.exports.findUser = (req, res, next) => {
-  const { id } = req.params;
+  const { _id } = req.user;
 
-  User.findById({ _id: id })
+  User.findById({ _id: _id })
     .orFail(new NotFoundError('Пользователь по указанному _id не найден'))
     .then((user) => res.status(CodeSuccess.OK).send(user))
     .catch((err) => {
