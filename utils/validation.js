@@ -2,7 +2,7 @@ const { celebrate, Joi } = require('celebrate');
 
 // Регулярное выражение для валидации ссылок (URL)
 const pattern = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/;
-
+const patternEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 module.exports.validateAuth = celebrate({
   body: Joi.object().keys({
     email: Joi.string().email().required(),
@@ -13,7 +13,7 @@ module.exports.validateAuth = celebrate({
 module.exports.validateRegister = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
-    email: Joi.string().email({ tlds: { allow: false } }).required(),
+    email: Joi.string().pattern(patternEmail).required(),
     password: Joi.string().required(),
   }),
 });
